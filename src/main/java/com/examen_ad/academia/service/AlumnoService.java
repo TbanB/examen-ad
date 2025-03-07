@@ -16,19 +16,19 @@ public class AlumnoService {
         return alumnoRepository.findAll();
     }
 
-    public Alumno findById(Long id) {
+    public Alumno findById(Integer id) {
         return alumnoRepository.findById(id).orElse(null);
     }
 
-    public List<Alumno> findByCursoId(Long id) {
-        return alumnoRepository.findByCurso_IdCurso(id);
+    public List<Alumno> findByCursoId(Integer id) {
+        return alumnoRepository.findByCursoIdCurso(id);
     }
 
     public Alumno save(Alumno alumno) {
         return alumnoRepository.save(alumno);
     }
 
-    public Alumno update(Long id, Alumno alumnoDetails) {
+    public Alumno update(Integer id, Alumno alumnoDetails) {
         Alumno alumno = findById(id);
         if (alumno != null) {
             alumno.setNombre(alumnoDetails.getNombre());
@@ -39,7 +39,7 @@ public class AlumnoService {
         return null;
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         alumnoRepository.deleteById(id);
     }
 }

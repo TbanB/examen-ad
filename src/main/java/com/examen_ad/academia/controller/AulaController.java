@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/aulas")
 public class AulaController {
 
     @Autowired
@@ -17,8 +19,12 @@ public class AulaController {
         return aulaService.findAll();
     }
 
+    public List<Aula> getAulaGreaterThan(Integer capacidad) {
+        return aulaService.findCapacidadGreaterThan(capacidad);
+    }
+
     @GetMapping("/{id}")
-    public Aula getAulaById(@PathVariable Long id) {
+    public Aula getAulaById(@PathVariable Integer id) {
         return aulaService.findById(id);
     }
 
@@ -28,12 +34,12 @@ public class AulaController {
     }
 
     @PutMapping("/{id}")
-    public Aula updateAula(@PathVariable Long id, @RequestBody Aula aulaDetails) {
+    public Aula updateAula(@PathVariable Integer id, @RequestBody Aula aulaDetails) {
         return aulaService.update(id, aulaDetails);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAula(@PathVariable Long id) {
+    public void deleteAula(@PathVariable Integer id) {
         aulaService.delete(id);
     }
 }

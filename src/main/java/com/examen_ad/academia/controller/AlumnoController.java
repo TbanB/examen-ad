@@ -20,12 +20,12 @@ public class AlumnoController {
     }
 
     @GetMapping("/{id}")
-    public Alumno getAlumnoById(@PathVariable Long id) {
+    public Alumno getAlumnoById(@PathVariable Integer id) {
         return alumnoService.findById(id);
     }
 
     @GetMapping("/{id}/cursos")
-    public List<Alumno> getAlumnoCursosById(@PathVariable Long id) {
+    public List<Alumno> getAlumnoCursosById(@PathVariable Integer id) {
         return alumnoService.findByCursoId(id);
     }
 
@@ -35,12 +35,12 @@ public class AlumnoController {
     }
 
     @PutMapping("/{id}")
-    public Alumno updateAlumno(@PathVariable Long id, @RequestBody Alumno alumnoDetails) {
+    public Alumno updateAlumno(@PathVariable Integer id, @RequestBody Alumno alumnoDetails) {
         return alumnoService.update(id, alumnoDetails);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAlumno(@PathVariable Long id) {
+    public void deleteAlumno(@PathVariable Integer id) {
         alumnoService.delete(id);
     }
 }

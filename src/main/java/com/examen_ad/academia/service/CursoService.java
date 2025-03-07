@@ -3,9 +3,11 @@ package com.examen_ad.academia.service;
 import com.examen_ad.academia.model.Curso;
 import com.examen_ad.academia.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CursoService {
 
     @Autowired
@@ -15,15 +17,19 @@ public class CursoService {
         return cursoRepository.findAll();
     }
 
-    public Curso findById(Long id) {
+    public Curso findById(Integer id) {
         return cursoRepository.findById(id).orElse(null);
+    }
+
+    public List<Curso> findCursosByAulaId(Integer id) {
+        return cursoRepository.findByAulaId(id);
     }
 
     public Curso save(Curso curso) {
         return cursoRepository.save(curso);
     }
 
-    public Curso update(Long id, Curso cursoDetails) {
+    public Curso update(Integer id, Curso cursoDetails) {
         Curso curso = findById(id);
         if (curso != null) {
             curso.setNombre(cursoDetails.getNombre());
@@ -34,7 +40,7 @@ public class CursoService {
         return null;
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         cursoRepository.deleteById(id);
     }
 }

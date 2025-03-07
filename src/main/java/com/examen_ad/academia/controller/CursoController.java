@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/cursos")
 public class CursoController {
 
     @Autowired
@@ -18,8 +20,14 @@ public class CursoController {
     }
 
     @GetMapping("/{id}")
-    public Curso getCursoById(@PathVariable Long id) {
+    public Curso getCursoById(@PathVariable Integer id) {
         return cursoService.findById(id);
+    }
+
+    @GetMapping("/aula/{id}")
+    public List<Curso> getCursoByAulaId(@PathVariable Integer id) {
+        System.out.println("id: " + id);
+        return cursoService.findCursosByAulaId(id);
     }
 
     @PostMapping
@@ -28,12 +36,12 @@ public class CursoController {
     }
 
     @PutMapping("/{id}")
-    public Curso updateCurso(@PathVariable Long id, @RequestBody Curso cursoDetails) {
+    public Curso updateCurso(@PathVariable Integer id, @RequestBody Curso cursoDetails) {
         return cursoService.update(id, cursoDetails);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCurso(@PathVariable Long id) {
+    public void deleteCurso(@PathVariable Integer id) {
         cursoService.delete(id);
     }
 }

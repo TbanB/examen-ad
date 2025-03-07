@@ -15,7 +15,7 @@ public class Profesor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_profesor")
-    private Long idProfesor;
+    private Integer idProfesor;
 
     @Column(nullable = false, length = 100)
     private String nombre;
@@ -29,9 +29,10 @@ public class Profesor {
 
     @ManyToMany
     @JoinTable(
-            name = "profesor_curso",
-            joinColumns = @JoinColumn(name = "profesor_id"),
-            inverseJoinColumns = @JoinColumn(name = "curso_id"))
+            name = "Profesor_Curso",
+            joinColumns = @JoinColumn(name = "id_profesor"),
+            inverseJoinColumns = @JoinColumn(name = "id_curso")
+    )
     private List<Curso> cursos;
 
 }

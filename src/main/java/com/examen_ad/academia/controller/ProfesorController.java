@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/profesor")
 public class ProfesorController {
 
     @Autowired
@@ -18,7 +20,7 @@ public class ProfesorController {
     }
 
     @GetMapping("/{id}")
-    public Profesor getProfesorById(@PathVariable Long id) {
+    public Profesor getProfesorById(@PathVariable Integer id) {
         return profesorService.findById(id);
     }
 
@@ -28,12 +30,12 @@ public class ProfesorController {
     }
 
     @PutMapping("/{id}")
-    public Profesor updateProfesor(@PathVariable Long id, @RequestBody Profesor profesorDetails) {
+    public Profesor updateProfesor(@PathVariable Integer id, @RequestBody Profesor profesorDetails) {
         return profesorService.update(id, profesorDetails);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteProfesor(@PathVariable Long id) {
+    public void deleteProfesor(@PathVariable Integer id) {
         profesorService.delete(id);
     }
 }

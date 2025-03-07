@@ -3,9 +3,11 @@ package com.examen_ad.academia.service;
 import com.examen_ad.academia.model.Profesor;
 import com.examen_ad.academia.repository.ProfesorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProfesorService {
 
     @Autowired
@@ -15,7 +17,7 @@ public class ProfesorService {
         return profesorRepository.findAll();
     }
 
-    public Profesor findById(Long id) {
+    public Profesor findById(Integer id) {
         return profesorRepository.findById(id).orElse(null);
     }
 
@@ -23,7 +25,7 @@ public class ProfesorService {
         return profesorRepository.save(profesor);
     }
 
-    public Profesor update(Long id, Profesor profesorDetails) {
+    public Profesor update(Integer id, Profesor profesorDetails) {
         Profesor profesor = findById(id);
         if (profesor != null) {
             profesor.setNombre(profesorDetails.getNombre());
@@ -36,7 +38,7 @@ public class ProfesorService {
         return null;
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         profesorRepository.deleteById(id);
     }
 }

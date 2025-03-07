@@ -3,6 +3,8 @@ package com.examen_ad.academia.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Aula")
 @Data
@@ -13,7 +15,7 @@ public class Aula {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_aula")
-    private Long idAula;
+    private Integer idAula;
 
     @Column(nullable = false)
     private String nombre;
@@ -21,7 +23,6 @@ public class Aula {
     @Column(nullable = false)
     private Integer capacidad;
 
-    @OneToOne
-    @JoinColumn(name = "id_aula")
-    private Aula aula;
+    @OneToMany(mappedBy = "aula")
+    private List<Profesor> profesores;
 }
